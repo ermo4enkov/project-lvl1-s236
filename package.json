@@ -1,6 +1,6 @@
 {
   "name": "brain_games_ermo4enkov",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "First project on Hexlet educational platform",
   "main": "index.js",
   "bin": {
