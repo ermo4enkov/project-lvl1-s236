@@ -38,5 +38,9 @@
     "babel-core": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "readline-sync": "^1.4.9"
   }
 }
