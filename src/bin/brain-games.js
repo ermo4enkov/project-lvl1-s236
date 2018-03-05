@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import Index from '..';
+import getUserName from '..';
 
-Index();
+getUserName();

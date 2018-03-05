@@ -1,8 +1,9 @@
-import readlineSync from "readline-sync";
-import colors from "colors";
+import readlineSync from 'readline-sync';
 
-export default () => {
-	console.log("Welcome to the " + "Brain ".bold + "Games!\n\n");
-	const userName  = readlineSync.question('May I have your name? ');
-	console.log("Hello, " + userName.bold);
-}
+const getUserName = () => {
+  console.log('Welcome to the Brain Games!\n\n');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}`);
+};
+
+export default getUserName;
