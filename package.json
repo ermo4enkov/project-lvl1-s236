@@ -1,0 +1,33 @@
+{
+  "name": "brain_games",
+  "version": "1.0.0",
+  "description": "First project on Hexlet educational platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ermo4enkov/project-lvl1-s236.git"
+  },
+  "keywords": [
+    "Hexlet",
+    "JS",
+    "Node",
+    "NPM",
+    "Babel",
+    "Education"
+  ],
+  "author": "Ermochenkov Roman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ermo4enkov/project-lvl1-s236/issues"
+  },
+  "homepage": "https://github.com/ermo4enkov/project-lvl1-s236#readme",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*"
+  }
+}
