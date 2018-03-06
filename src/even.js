@@ -6,9 +6,7 @@ const isNumberEven = number => number % 2 === 0;
 
 const checkAnswer = (answer, number) => (isNumberEven(number) && answer === 'yes') || (!isNumberEven(number) && answer === 'no');
 
-const switchAnswer = (number) => {
-  return isNumberEven(number) ? 'yes' : 'no';
-};
+const switchAnswer = (number => (isNumberEven(number) ? 'yes' : 'no'));
 
 const findOutNumber = (userName) => {
   let count = 0;
@@ -18,14 +16,15 @@ const findOutNumber = (userName) => {
     const answer = readlineSync.question('Your answer: ');
     if (checkAnswer(answer, number)) {
       count += 1;
+      console.log('Correct!');
     } else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${switchAnswer(number)}'`);
       console.log(`Let's try again, ${userName}!`);
       return false;
     }
   }
-  console.log('Correct!');
   console.log(`Congratulations ${userName}`);
+  return true;
 };
 
 const evenOrNoGame = () => {
