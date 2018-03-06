@@ -1,12 +1,17 @@
 import readlineSync from 'readline-sync';
 import chalk from 'chalk';
+import * as utils from '../index';
 
 const greetings = 'Welcome to the Brain Games!\nWhat is the result of the expression?';
 const signsArray = ['+', '-', '*'];
-const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+// const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+
+const randomNumb = (a, b) => utils.getRandomNumber(a, b);
 
 const resolveExpression = (userName) => {
-  console.log(randomItem(signsArray));
+  console.log(randomNumb());
+//   console.log(randomItem(signsArray));
+//   console.log(getRandomNumber.getRandomNumber());
 };
 
 
