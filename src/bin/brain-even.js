@@ -1,3 +1,4 @@
 #!/usr/bin/env node
+import evenOrNoGame from '../even';
 
-console.log('Hello!');
+evenOrNoGame();
