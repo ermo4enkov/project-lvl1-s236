@@ -6,4 +6,7 @@ const getUserName = () => {
   console.log(`Hello, ${userName}`);
 };
 
-export default getUserName;
+export const getRandomNumber = (min = 1, max = 100) =>
+  (Math.random() * ((max - min) + min)).toFixed(0);
+
+export default { getUserName, getRandomNumber };
