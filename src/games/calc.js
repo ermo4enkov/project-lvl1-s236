@@ -1,13 +1,14 @@
 import readlineSync from 'readline-sync';
 import { cons, car, cdr } from 'hexlet-pairs';
 import chalk from 'chalk';
-import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '../utils';
+import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '..';
 
 const signsArray = ['+', '-', '*'];
 const randomSign = arr => getRandomItem(arr);
-const randomNumb = () => getRandomNumber();
 const greetings = subtitle => sayHello(subtitle);
+
 const checkAnswer = (goal, answer) => checkNumberAnswer(goal, answer);
+
 const expectedAnswer = (num1, num2, sign) => {
   switch (String(sign)) {
     case '+':
@@ -24,7 +25,7 @@ const expectedAnswer = (num1, num2, sign) => {
 const resolveExpression = (userName) => {
   let count = 0;
   while (count < 3) {
-    const pairOfNumbers = cons(randomNumb(), randomNumb());
+    const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
     const expression = cons(pairOfNumbers, randomSign(signsArray));
     const num1 = car(car(expression));
     const num2 = cdr(car(expression));
