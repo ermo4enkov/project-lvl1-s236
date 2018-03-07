@@ -4,6 +4,13 @@ import { getRandomNumber, sayHello, checkNumberAnswer } from '../utils';
 
 const randomNumb = () => getRandomNumber();
 const greetings = subtitle => sayHello(subtitle);
+const getSumOfNumbers = arr => arr.reduce(function(sum, current) {
+  return Number(sum) + Number(current);
+}, 0);
+
+
+
+
 const getBalancedNumber = number => console.log(String(number).length);
 
 const findOutBalance = (userName) => {
@@ -11,7 +18,7 @@ const findOutBalance = (userName) => {
   getBalancedNumber(215);
 };
 
-const getbalance = (length) => {
+const starterNum = (length) => {
   const startedNum = [];
   for (let i = 0; i < length; i += 1) {
     startedNum.push(0);
