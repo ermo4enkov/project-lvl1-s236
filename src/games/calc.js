@@ -4,10 +4,6 @@ import chalk from 'chalk';
 import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '..';
 
 const signsArray = ['+', '-', '*'];
-const randomSign = arr => getRandomItem(arr);
-const greetings = subtitle => sayHello(subtitle);
-
-const checkAnswer = (goal, answer) => checkNumberAnswer(goal, answer);
 
 const expectedAnswer = (num1, num2, sign) => {
   switch (String(sign)) {
@@ -26,14 +22,14 @@ const resolveExpression = (userName) => {
   let count = 0;
   while (count < 3) {
     const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
-    const expression = cons(pairOfNumbers, randomSign(signsArray));
+    const expression = cons(pairOfNumbers, getRandomItem(signsArray));
     const num1 = car(car(expression));
     const num2 = cdr(car(expression));
     const sign = cdr(expression);
     const goal = expectedAnswer(num1, num2, sign);
     console.log(`Question: ${num1}${sign}${num2}`);
     const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
-    if (checkAnswer(goal, answer)) {
+    if (checkNumberAnswer(goal, answer)) {
       count += 1;
       console.log(`${chalk.hex('#d14')('Correct!')}`);
     } else {
@@ -49,7 +45,7 @@ const resolveExpression = (userName) => {
 
 
 const calcGame = () => {
-  greetings('What is the result of the expression?');
+  sayHello('What is the result of the expression?');
   const userName = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
   console.log(`Hello, ${chalk.hex('#0086b3')(userName)}\n`);
   resolveExpression(userName);
