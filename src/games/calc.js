@@ -1,20 +1,43 @@
 import readlineSync from 'readline-sync';
+import { cons, car, cdr } from 'hexlet-pairs';
 import chalk from 'chalk';
 import { getRandomItem, getRandomNumber, sayHello } from '../utils';
-
 
 const signsArray = ['+', '-', '*'];
 const randomSign = arr => getRandomItem(arr);
 const randomNumb = (a, b) => getRandomNumber(a, b);
 const greetings = subtitle => sayHello(subtitle);
 
+const expectedAnswer = (num1, num2, sign) => {
+  switch (String(sign)) {
+    case '+':
+      return Number(num1) + Number(num2);
+    case '-':
+      return Number(num1) - Number(num2);
+    case '*':
+      return Number(num1) * Number(num2);
+    default:
+      return false;
+  }
+};
+
 const resolveExpression = (userName) => {
-  console.log(randomNumb());
-  console.log(randomSign(signsArray));
-  console.log(userName);
+  const pairOfNumbers = cons(randomNumb(), randomNumb());
+  const expression = cons(pairOfNumbers, randomSign(signsArray));
+  const num1 = car(car(expression));
+  const num2 = cdr(car(expression));
+  const sign = cdr(expression);
+  expectedAnswer(num1, num2, sign);
+
+  // const expression = (num1 = number1, num2 = number2) => cons(num1, num2);
+  // const sig = expression();
+
+  // console.log(sig);
+  
 
   const number = getRandomNumber();
   console.log(`Question: ${number}`);
+  const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
 };
 
 
