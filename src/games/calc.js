@@ -7,7 +7,7 @@ const signsArray = ['+', '-', '*'];
 const randomSign = arr => getRandomItem(arr);
 const randomNumb = (a, b) => getRandomNumber(a, b);
 const greetings = subtitle => sayHello(subtitle);
-
+const checkAnswer = (goal, answer) => Number(goal) === Number(answer);
 const expectedAnswer = (num1, num2, sign) => {
   switch (String(sign)) {
     case '+':
@@ -22,22 +22,29 @@ const expectedAnswer = (num1, num2, sign) => {
 };
 
 const resolveExpression = (userName) => {
-  const pairOfNumbers = cons(randomNumb(), randomNumb());
-  const expression = cons(pairOfNumbers, randomSign(signsArray));
-  const num1 = car(car(expression));
-  const num2 = cdr(car(expression));
-  const sign = cdr(expression);
-  expectedAnswer(num1, num2, sign);
+  let count = 0;
+  while (count < 3) {
+    const pairOfNumbers = cons(randomNumb(), randomNumb());
+    const expression = cons(pairOfNumbers, randomSign(signsArray));
+    const num1 = car(car(expression));
+    const num2 = cdr(car(expression));
+    const sign = cdr(expression);
+    const goal = expectedAnswer(num1, num2, sign);
+    console.log(`Question: ${num1}${sign}${num2}`);
+    // console.log(goal);
+    const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
+    if (checkAnswer(goal, answer)) {
+      count += 1;
+      console.log(`${chalk.hex('#d14')('Correct!')}`);
+    } else {
+      console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(goal)}'`);
+      console.log(`Let's try again, ${userName}!`);
+      return false;
+    }
+  }
 
-  // const expression = (num1 = number1, num2 = number2) => cons(num1, num2);
-  // const sig = expression();
-
-  // console.log(sig);
-  
-
-  const number = getRandomNumber();
-  console.log(`Question: ${number}`);
-  const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
+  console.log(`${chalk.hex('#d14')('Congratulations,', userName, '!')}`);
+  return true;
 };
 
 
