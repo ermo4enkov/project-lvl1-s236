@@ -31,7 +31,6 @@ const resolveExpression = (userName) => {
     const sign = cdr(expression);
     const goal = expectedAnswer(num1, num2, sign);
     console.log(`Question: ${num1}${sign}${num2}`);
-    // console.log(goal);
     const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
     if (checkAnswer(goal, answer)) {
       count += 1;
