@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import { cons, car, cdr } from 'hexlet-pairs';
 import chalk from 'chalk';
-import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '..';
+import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer, userName } from '..';
 
 const signsArray = ['+', '-', '*'];
 
@@ -46,9 +46,7 @@ const resolveExpression = (userName) => {
 
 const calcGame = () => {
   sayHello('What is the result of the expression?');
-  const userName = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
-  console.log(`Hello, ${chalk.hex('#0086b3')(userName)}\n`);
-  resolveExpression(userName);
+  resolveExpression(`${userName()}`);
 };
 
 export default calcGame;
