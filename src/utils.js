@@ -10,4 +10,8 @@ function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-export { getRandomNumber, getRandomItem, sayHello };
+function checkNumberAnswer(goal, answer) {
+  return Number(goal) === Number(answer);
+}
+
+export { getRandomNumber, getRandomItem, sayHello, checkNumberAnswer };
