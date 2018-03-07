@@ -5,7 +5,7 @@ import { getRandomItem, getRandomNumber, sayHello } from '../utils';
 
 const signsArray = ['+', '-', '*'];
 const randomSign = arr => getRandomItem(arr);
-const randomNumb = (a, b) => getRandomNumber(a, b);
+const randomNumb = () => getRandomNumber();
 const greetings = subtitle => sayHello(subtitle);
 const checkAnswer = (goal, answer) => Number(goal) === Number(answer);
 const expectedAnswer = (num1, num2, sign) => {

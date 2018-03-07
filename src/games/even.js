@@ -1,17 +1,17 @@
 import readlineSync from 'readline-sync';
 import chalk from 'chalk';
+import { getRandomNumber, sayHello } from '../utils';
 
-const getRandomNumber = (min = 1, max = 100) => (Math.random() * ((max - min) + min)).toFixed(0);
+const randomNumb = () => getRandomNumber();
 const isNumberEven = number => number % 2 === 0;
 const checkAnswer = (answer, number) => (isNumberEven(number) && answer === 'yes') || (!isNumberEven(number) && answer === 'no');
 const switchAnswer = (number => (isNumberEven(number) ? 'yes' : 'no'));
-
-const greetings = `Welcome to the Brain Games!\nAnswer ${chalk.hex('#d14')('"yes"')} if ${chalk.hex('#0086b3')('number')} even otherwise answer ${chalk.hex('#d14')('"no"')}.\n`;
+const greetings = subtitle => sayHello(subtitle);
 
 const findOutNumber = (userName) => {
   let count = 0;
   while (count < 3) {
-    const number = getRandomNumber();
+    const number = randomNumb();
     console.log(`Question: ${number}`);
     const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
     if (checkAnswer(answer, number)) {
@@ -29,7 +29,7 @@ const findOutNumber = (userName) => {
 };
 
 const evenOrNoGame = () => {
-  console.log(`${greetings}`);
+  greetings(`Answer ${chalk.hex('#d14')('"yes"')} if ${chalk.hex('#0086b3')('number')} even otherwise answer ${chalk.hex('#d14')('"no"')}.\n`);
   const userName = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
   console.log(`Hello, ${chalk.hex('#0086b3')(userName)}\n`);
   findOutNumber(userName);
