@@ -14,4 +14,13 @@ function checkNumberAnswer(goal, answer) {
   return Number(goal) === Number(answer);
 }
 
-export { getRandomNumber, getRandomItem, sayHello, checkNumberAnswer };
+const addNumbers = function (sum, current) {
+  return Number(sum) + Number(current);
+};
+
+function totalSumOfNumbers(num) {
+  const arr = num.split('');
+  return arr.reduce(addNumbers, 0);
+}
+
+export { getRandomNumber, getRandomItem, sayHello, checkNumberAnswer, totalSumOfNumbers };
