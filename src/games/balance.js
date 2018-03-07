@@ -2,19 +2,20 @@ import readlineSync from 'readline-sync';
 import chalk from 'chalk';
 import { getRandomNumber, sayHello, checkNumberAnswer, totalSumOfNumbers } from '../utils';
 
-const randomNumb = () => getRandomNumber();
+const randomNumb = () => getRandomNumber(11, 9999);
 const greetings = subtitle => sayHello(subtitle);
 const getSumOfNumbers = num => totalSumOfNumbers(num);
 
 
 const getBalancedNumber = (number) => {
   const summ = getSumOfNumbers(number);
+  console.log(number);
   console.log(summ);
 };
 
 const findOutBalance = (userName) => {
   console.log(userName);
-  getBalancedNumber('215');
+  getBalancedNumber(randomNumb());
 };
 
 const balanceGame = () => {
