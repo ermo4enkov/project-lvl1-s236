@@ -48,6 +48,7 @@
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
+    "hexlet-pairs": "^1.0.5",
     "readline-sync": "^1.4.9"
   }
 }

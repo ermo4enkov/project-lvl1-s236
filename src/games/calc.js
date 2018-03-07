@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
 import chalk from 'chalk';
-import { getRandomItem, getRandomNumber, sayHello } from '../index';
+import { getRandomItem, getRandomNumber, sayHello } from '../utils';
+
 
 const signsArray = ['+', '-', '*'];
 const randomSign = arr => getRandomItem(arr);
@@ -11,8 +12,9 @@ const resolveExpression = (userName) => {
   console.log(randomNumb());
   console.log(randomSign(signsArray));
   console.log(userName);
-//   console.log(randomItem(signsArray));
-//   console.log(getRandomNumber.getRandomNumber());
+
+  const number = getRandomNumber();
+  console.log(`Question: ${number}`);
 };
 
 
