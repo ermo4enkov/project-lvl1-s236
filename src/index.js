@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 import chalk from 'chalk';
 import { car, cdr } from 'hexlet-pairs';
 
-import sayHello from './utils';
+import { sayHello, checkNumberAnswer } from './utils';
 
 export const getUserName = () => {
   const name = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
@@ -10,22 +10,25 @@ export const getUserName = () => {
   return name;
 };
 
-const gameInterface = (gameRules, gamePlay) => {
-  // console.log(`Welcome to the Brain Games!\n${gameRules}\n`);
-  sayHello(`${gameRules}`);
+const gameInterface = (gameTitle, gamePlay) => {
+  sayHello(`${gameTitle}`);
   const userName = getUserName();
-  // console.log(`Hello, ${userName}!\n`);
-  
-  for (let i = 0; i < 3; i += 1) {
-    const pair = gamePlay(car, cdr);
-    const userAnswer = readlineSync.question(`Question: ${car(pair)}\nYour answer: `);
-    if (userAnswer === cdr(pair)) {
-      console.log('Correct!\n');
+  let count = 0;
+  while (count < 3) {
+    console.log(`Question: ${'smt'}`);
+    const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
+    if (checkNumberAnswer(goal, answer)) {
+      count += 1;
+      console.log(`${chalk.hex('#d14')('Correct!')}`);
     } else {
-      console.log('Wrong!\n');
+      console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(goal)}'`);
+      console.log(`Let's try again, ${userName}!`);
+      return false;
     }
   }
-  console.log(`Congratulations, ${userName}!`);
+  console.log(`${chalk.hex('#d14')('Congratulations,', userName, '!')}`);
+  return true;
 };
 
 export default gameInterface;
+
