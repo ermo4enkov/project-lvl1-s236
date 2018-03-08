@@ -1,22 +1,11 @@
-// function getRandomNumber(min = 1, max = 100) {
-//   return (Math.random() * ((max - min) + min)).toFixed(0);
-// }
+import readlineSync from 'readline-sync';
+import chalk from 'chalk';
 
-function getRandomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+export const getRandomNumber = (min = 1, max = 100) =>
+  Math.floor(Math.random() * ((max - min) + 1)) + min;
 
-function checkNumberAnswer(goal, answer) {
-  return Number(goal) === Number(answer);
-}
+export const sayHello = rules => console.log(`Welcome to the Brain Games!\n${rules}\n`);
 
-const addNumbers = function (sum, current) {
-  return Number(sum) + Number(current);
-};
+export const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
-function totalSumOfNumbers(num) {
-  const arr = num.split('');
-  return arr.reduce(addNumbers, 0);
-}
-
-export { getRandomItem, checkNumberAnswer, totalSumOfNumbers };
+export const checkNumberAnswer = (goal, answer) => Number(goal) === Number(answer);

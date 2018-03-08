@@ -1,7 +1,8 @@
 import readlineSync from 'readline-sync';
 import { cons, car, cdr } from 'hexlet-pairs';
 import chalk from 'chalk';
-import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer, userName } from '..';
+import { getUserName } from '..';
+import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '../utils';
 
 const signsArray = ['+', '-', '*'];
 
@@ -18,7 +19,7 @@ const expectedAnswer = (num1, num2, sign) => {
   }
 };
 
-const resolveExpression = (userName) => {
+const resolveExpression = (name) => {
   let count = 0;
   while (count < 3) {
     const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
@@ -34,19 +35,19 @@ const resolveExpression = (userName) => {
       console.log(`${chalk.hex('#d14')('Correct!')}`);
     } else {
       console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(goal)}'`);
-      console.log(`Let's try again, ${userName}!`);
+      console.log(`Let's try again, ${name}!`);
       return false;
     }
   }
 
-  console.log(`${chalk.hex('#d14')('Congratulations,', userName, '!')}`);
+  console.log(`${chalk.hex('#d14')('Congratulations,', name, '!')}`);
   return true;
 };
 
 
 const calcGame = () => {
   sayHello('What is the result of the expression?');
-  resolveExpression(`${userName()}`);
+  resolveExpression(`${getUserName()}`);
 };
 
 export default calcGame;
