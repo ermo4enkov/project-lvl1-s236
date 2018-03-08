@@ -1,8 +1,6 @@
-import readlineSync from 'readline-sync';
 import { cons, car, cdr } from 'hexlet-pairs';
-import chalk from 'chalk';
-import { getUserName } from '..';
-import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '../utils';
+import gameInterface from '..';
+import { getRandomItem, getRandomNumber } from '../utils';
 
 const signsArray = ['+', '-', '*'];
 
@@ -19,35 +17,20 @@ const expectedAnswer = (num1, num2, sign) => {
   }
 };
 
-const resolveExpression = (name) => {
-  let count = 0;
-  while (count < 3) {
-    const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
-    const expression = cons(pairOfNumbers, getRandomItem(signsArray));
-    const num1 = car(car(expression));
-    const num2 = cdr(car(expression));
-    const sign = cdr(expression);
-    const goal = expectedAnswer(num1, num2, sign);
-    console.log(`Question: ${num1}${sign}${num2}`);
-    const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
-    if (checkNumberAnswer(goal, answer)) {
-      count += 1;
-      console.log(`${chalk.hex('#d14')('Correct!')}`);
-    } else {
-      console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(goal)}'`);
-      console.log(`Let's try again, ${name}!`);
-      return false;
-    }
-  }
+const gameTitle = 'What is the result of the expression?';
 
-  console.log(`${chalk.hex('#d14')('Congratulations,', name, '!')}`);
-  return true;
+const gamePlay = () => {
+  const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
+  const expression = cons(pairOfNumbers, getRandomItem(signsArray));
+  const num1 = car(car(expression));
+  const num2 = cdr(car(expression));
+  const sign = cdr(expression);
+  const gameGoal = expectedAnswer(num1, num2, sign);
+  const gameQuestion = `${num1} ${sign} ${num2}`;
+  return cons(gameQuestion, gameGoal);
 };
 
 
-const calcGame = () => {
-  sayHello('What is the result of the expression?');
-  resolveExpression(`${getUserName()}`);
-};
+const calcGame = () => gameInterface(gameTitle, gamePlay);
 
 export default calcGame;
