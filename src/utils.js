@@ -5,4 +5,5 @@ export const sayHello = rules => console.log(`Welcome to the Brain Games!\n${rul
 
 export const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
-export const checkNumberAnswer = (goal, answer) => Number(goal) === Number(answer);
+export const checkAnswer = (goal, answer) => goal === answer;
+
