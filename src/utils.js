@@ -2,6 +2,12 @@ import chalk from 'chalk';
 import readlineSync from 'readline-sync';
 import { car, cdr } from 'hexlet-pairs';
 
+export const getUserName = () => {
+  const name = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
+  console.log(`Hello, ${chalk.hex('#0086b3')(name)}\n`);
+  return name;
+};
+
 export const getRandomNumber = (min = 1, max = 100) =>
   Math.floor(Math.random() * ((max - min) + 1)) + min;
 
@@ -12,7 +18,8 @@ export const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 export const checkAnswer = (goal, answer) => goal === answer;
 
 
-export const startGame = (gameTitle, gamePlay, userName) => {
+export const startGame = (gameTitle, gamePlay) => {
+  const userName = getUserName();
   let count = 0;
   while (count < 3) {
     const game = gamePlay(car, cdr);

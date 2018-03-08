@@ -1,29 +1,33 @@
-import readlineSync from 'readline-sync';
-import chalk from 'chalk';
-import { checkNumberAnswer, totalSumOfNumbers } from '../utils';
-import { getRandomNumber, sayHello } from '..';
+import { cons } from 'hexlet-pairs';
+import gameInterface from '..';
+import { getRandomNumber } from '../utils';
 
-const randomNumb = getRandomNumber(11, 9999);
-const getSumOfNumbers = num => totalSumOfNumbers(num);
+const gameTitle = 'Balance the given number.';
 
-
-// const getBalancedNumber = (number) => {
-//   const summ = getSumOfNumbers(number);
-//   console.log(number);
-//   console.log(summ);
-// };
-
-const findOutBalance = (userName) => {
-  console.log(userName);
-//   getBalancedNumber(randomNumb);
-  console.log(randomNumb);
+const getBalanceNumber = (number) => {
+  const integers = String(number).split('').sort((a, b) => a - b).join('');
+  const min = Number(integers.charAt(0));
+  const max = Number(integers.charAt(integers.length - 1));
+  const remainder = max - min;
+  if (remainder < 2) {
+    return integers;
+  }
+  const balance = (remainder - (remainder % 2)) / 2;
+  let restStr = '';
+  if (integers.length > 2) {
+    restStr = integers.substring(1, integers.length - 2);
+  }
+  return getBalanceNumber(`${min + balance}${restStr}${max - balance}`);
 };
 
-const balanceGame = () => {
-  sayHello('Find the greatest common divisor of given numbers.');
-  const userName = readlineSync.question(`May I have your ${chalk.hex('#0086b3')('name')}? `);
-  console.log(`Hello, ${chalk.hex('#0086b3')(userName)}\n`);
-  findOutBalance(userName);
+
+const gamePlayBalance = () => {
+  const number = getRandomNumber(11, 999);
+  const gameGoal = getBalanceNumber(number);
+  const gameQuestion = `${number}`;
+  return cons(gameQuestion, gameGoal);
 };
+
+const balanceGame = () => gameInterface(gameTitle, gamePlayBalance);
 
 export default balanceGame;
