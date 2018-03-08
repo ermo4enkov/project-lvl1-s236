@@ -1,8 +1,6 @@
-import readlineSync from 'readline-sync';
 import { cons, car, cdr } from 'hexlet-pairs';
-import chalk from 'chalk';
-import { getUserName } from '..';
-import { getRandomItem, getRandomNumber, sayHello, checkNumberAnswer } from '../utils';
+import gameInterface from '..';
+import { getRandomItem, getRandomNumber } from '../utils';
 
 const signsArray = ['+', '-', '*'];
 
@@ -19,19 +17,20 @@ const expectedAnswer = (num1, num2, sign) => {
   }
 };
 
+const gameTitle = 'What is the result of the expression?';
+
 const gamePlay = () => {
   const pairOfNumbers = cons(getRandomNumber(), getRandomNumber());
   const expression = cons(pairOfNumbers, getRandomItem(signsArray));
   const num1 = car(car(expression));
   const num2 = cdr(car(expression));
   const sign = cdr(expression);
-  const goal = expectedAnswer(num1, num2, sign);
+  const gameGoal = expectedAnswer(num1, num2, sign);
+  const gameQuestion = `${num1} ${sign} ${num2}`;
+  return cons(gameQuestion, gameGoal);
 };
 
 
-const calcGame = () => {
-  sayHello('What is the result of the expression?');
-  resolveExpression(`${getUserName()}`);
-};
+const calcGame = () => gameInterface(gameTitle, gamePlay);
 
 export default calcGame;

@@ -12,16 +12,19 @@ export const getUserName = () => {
 
 const gameInterface = (gameTitle, gamePlay) => {
   sayHello(`${gameTitle}`);
-  const userName = getUserName();
   let count = 0;
+  const userName = getUserName();
   while (count < 3) {
-    console.log(`Question: ${'smt'}`);
+    const game = gamePlay(car, cdr);
+    const gameGoal = cdr(game);
+    const gameQuestion = car(game);
+    console.log(`Question: ${gameQuestion}`);
     const answer = readlineSync.question(`${chalk.hex('#d14')('Your')} answer: `).toLowerCase();
-    if (checkNumberAnswer(goal, answer)) {
+    if (checkNumberAnswer(gameGoal, answer)) {
       count += 1;
       console.log(`${chalk.hex('#d14')('Correct!')}`);
     } else {
-      console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(goal)}'`);
+      console.log(`'${chalk.hex('#990073')(answer)}' is wrong answer ;(. Correct answer was '${chalk.hex('#990073')(gameGoal)}'`);
       console.log(`Let's try again, ${userName}!`);
       return false;
     }
