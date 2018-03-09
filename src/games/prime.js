@@ -4,13 +4,17 @@ import { getRandomNumber } from '../utils';
 
 const gameTitle = 'Is this number prime?';
 
-const checkNumberPrime = (number) => {
-  for (let i = 2; i < number; i += 1) {
-    if (number % i === 0) {
-      return 'no';
-    }
+const checkNumberPrime = (number, step = 2) => {
+  if (number < 2) {
+    return 'no';
   }
-  return number > 1 ? 'yes' : 'no';
+  if (number % step === 0) {
+    return 'no';
+  }
+  if (step >= number / 2) {
+    return 'yes';
+  }
+  return checkNumberPrime(number, step + 1);
 };
 
 const gamePlayPrime = () => {
